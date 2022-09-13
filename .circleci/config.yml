@@ -26,8 +26,7 @@ jobs:
       - run:
           name: Install API Dependencies
           command: |
-           npm run api:install
-
+            npm run api:install
       # TODO: Build the frontend app
       - run:
           name: Front-End Build
@@ -38,33 +37,14 @@ jobs:
           name: API Build
           command: |
             npm run api:build
-  # deploy step will run only after manual approval
-  deploy:
-    docker:
-      - image: "cimg/base:stable"
-      # more setup needed for aws, node, elastic beanstalk
-    steps:
-      - node/install:
-          node-version: '14.15' 
-      - eb/setup
-      - aws-cli/setup
-      - checkout
       - run:
-          name: Deploy App
-          # TODO: Install, build, deploy in both apps
+          name: Deploy API
           command: |
-            npm run frontend:install
-            |
-            npm run api:install
-            |
-            npm run frontend:build
-            |
-            npm run api:build
-            |
-            npm run frontend:deploy
-            |
             npm run api:deploy
-
+      - run:
+          name: Deploy Frontend
+          command: |
+            npm run frontend:deploy
 workflows:
   udagram:
     jobs:
