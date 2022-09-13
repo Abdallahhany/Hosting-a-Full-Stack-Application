@@ -5,8 +5,8 @@ import { config } from "./config/config";
 
 export const s3 = new AWS.S3({
   signatureVersion: "v4",
-  region: config.aws_region,
-  params: { Bucket: config.aws_media_bucket },
+  region: config.awsRegion,
+  params: { Bucket: config.awsMediaBucket },
 });
 
 // Generates an AWS signed URL for retrieving objects
@@ -14,7 +14,7 @@ export function getGetSignedUrl(key: string): string {
   const signedUrlExpireSeconds = 60 * 5;
 
   return s3.getSignedUrl("getObject", {
-    Bucket: config.aws_media_bucket,
+    Bucket: config.awsMediaBucket,
     Key: key,
     Expires: signedUrlExpireSeconds,
   });
@@ -25,7 +25,7 @@ export function getPutSignedUrl(key: string): string {
   const signedUrlExpireSeconds = 60 * 5;
 
   return s3.getSignedUrl("putObject", {
-    Bucket: config.aws_media_bucket,
+    Bucket: config.awsMediaBucket,
     Key: key,
     Expires: signedUrlExpireSeconds,
   });
