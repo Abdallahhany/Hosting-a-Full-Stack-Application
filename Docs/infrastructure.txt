@@ -1,0 +1,13 @@
+FrontEnd Enviroment: 
+    S3 BucketName: udagramprojectbucket
+    S3 URL: http://udagramprojectbucket.s3-website-us-west-2.amazonaws.com/
+
+BackEnd Enviroment: 
+    DB ENDPOINT: udagram-database.c5sxnudi1lbf.us-east-1.rds.amazonaws.com
+    Application Name [EB_APP]: udagram-api
+    Enviroment Name [EB_ENV]: udagram-api-dev
+    EB URL: http://udagram-api-dev.us-west-2.elasticbeanstalk.com/
+
+Deployment Pipeline Enviroment:
+    CircleCi
+    GitHub Repo: https://github.com/Abdallahhany/Hosting-a-Full-Stack-Application
